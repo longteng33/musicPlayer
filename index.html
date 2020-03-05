@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <title>音乐播放器</title>
+    <style>
+
+    </style>
+    <link rel="stylesheet" href="./font_icon/iconfont.css">
+    <link rel="stylesheet" href="./index.css">
+</head>
+
+<body>
+    <div class="player">
+        <main class="player-main">
+            <div class="title-con">
+                <span class="title"></span>
+            </div>
+            <div class="img-con">
+                <img src="./img/circle.jpg" alt="">
+            </div>
+            <div class="audio-con">
+                <audio src="" class="audio"></audio>
+            </div>
+        </main>
+        <div class="control">
+            <div class="control-container ">
+                <div class="btn">
+                    <div class="prev-btn iconfont icon-shangyishou"></div>
+                    <div class="play-btn iconfont icon-play_icon"></div>
+                    <div class="next-btn iconfont icon-kuaijin"></div>
+                </div>
+                
+                <div class="progress clearfix">
+                    <span class="current-time">00:00</span>
+                    <div class="progress-bar">
+                        <div class="progress-bg">
+                            <div class="progress-active">
+                                <div class="dots"></div>
+                            </div>
+                        </div>
+                        
+                    </div>
+                    <span class="end-time">00:00</span>
+                </div>
+                <div class="volume">
+                    <i class="volume-btn iconfont icon-yinliang"></i>
+                    <div class="volume-con">
+                        <div class="volume-bar">
+                            <div class="volume-bg">
+                                <div class="volume-active">
+                                    <div class="dots"></div>
+                                </div>
+                            </div>
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <script src="./jquery-3.4.1.min.js"></script>
+    <script src="./index.js"></script>
+    <script src="./dragVolumeBar.js"></script>
+    <script>
+
+
+
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,346 @@
+body,
+ul,
+li,
+a,
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  padding: 0;
+  margin: 0;
+  text-decoration: none;
+  list-style: none;
+}
+html,
+body {
+  /* font: 14px/1.5 "PingFang SC", "微软雅黑", "Microsoft YaHei", Helvetica, "Helvetica Neue", Tahoma, Arial, sans-serif; */
+  color: #1c1f21;
+}
+a:link,
+a:visited {
+  color: #000;
+}
+
+a:hover,
+a:active {
+  color: #000;
+}
+.clearfix:after {
+  content: "\0020";
+  display: block;
+  height: 0;
+  clear: both;
+  visibility: hidden;
+}
+
+/* 单行打点 */
+.text-ellipsis {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+/* 多行打点 */
+.multi-ellipsis {
+  /* 默认2行 */
+  -webkit-line-clamp: 2;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+.hover-underline {
+  position: relative;
+}
+.hover-underline::after {
+  position: absolute;
+  display: block;
+  content: "";
+  height: 2px;
+  width: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+  background: #ccc;
+  transition: width 0.3s ease;
+}
+.hover-underline:hover::after {
+  width: 100%;
+}
+
+.active-underline {
+  position: relative;
+}
+.active-underline::after {
+  position: absolute;
+  display: block;
+  content: "";
+  height: 3px;
+  width: 50%;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  margin: 0 auto;
+  background: #333;
+  transition: width 0.3s ease;
+}
+.player {
+  max-width: 1000px;
+  min-width: 700px;
+  background-image: url(./img/09595250.jpg);
+  background-repeat: no-repeat;
+  background-position: center bottom;
+  background-size: cover;
+  margin: 0px auto;
+  border-radius: 30px;
+  overflow: hidden;
+  user-select: none;
+}
+
+.player .player-main {
+  padding: 30px 0;
+}
+.player .player-main .title-con{
+  position: relative;
+  width: 300px;
+  height: 40px;
+  overflow:hidden;
+  margin:0 auto 10px;
+}
+.player .player-main .title{
+  position: absolute;
+  color: #fff;
+  display: inline-block;
+  white-space: nowrap;
+  text-align: center;
+  height:30px;
+  line-height: 30px;
+  animation: titleMove 7s infinite linear paused;
+}
+@keyframes titleMove{
+  0%{
+    right: 0;
+    transform: translateX(100%);
+  }
+  100%{
+    right: 100%;
+  }
+}
+.player .player-main .img-con {
+  width: 120px;
+  height: 120px;
+  border: 50px solid #444;
+  border-radius: 50%;
+  margin: 0 auto;
+  overflow: hidden;
+  cursor: pointer;
+  animation: imgRotate 4s infinite linear paused;
+}
+/* cd图案旋转 */
+@keyframes imgRotate{
+  0%{
+    transform: rotateZ(0);
+  }
+  100%{
+    transform: rotateZ(360deg);
+  }
+}
+
+
+.player .player-main .img-con img {
+  width: 100%;
+  height: 100%;
+}
+.player .control {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 600px;
+  height: 80px;
+  background-color: rgba(0, 0, 0, 0.5);
+  margin: 0 auto 50px;
+  border-radius: 20px;
+}
+.player .control .control-container {
+  display: inline-block;
+  height: 30px;
+}
+.player .control .btn{
+  display: inline-block;
+  height: 30px;
+  vertical-align: middle;
+  
+}
+
+.player .control .btn>div{
+  display: inline-block;
+  width: 30px;
+  height: 30px;
+  color: #fff;
+  line-height: 30px;
+  text-align: center;
+  font-size: 30px;
+  cursor: pointer;
+  margin-right: 5px;
+}
+.player .control .btn>div:hover {
+  color: #ccc;
+}
+.player .control .progress {
+  display: inline-block;
+  height: 30px;
+  vertical-align: middle;
+}
+.player .progress .current-time {
+  float: left;
+  height: 30px;
+  line-height: 30px;
+  font-size: 16px;
+  color: #fff;
+  margin-right: 10px;
+  width: 64px;
+  text-align: right;
+}
+.player .progress .progress-bar {
+  float: left;
+  position: relative;
+  width: 240px;
+  height: 10px;
+  margin: 10px 0;
+  cursor: pointer;
+}
+.player .progress .progress-bar .progress-bg {
+  position: absolute;
+  width: 100%;
+  height: 2px;
+ bottom: 4px;
+  background-color: rgba(0, 0, 0, 0.3);
+  transition: height 0.3s ease;
+}
+.player .progress .progress-bar .progress-bg::before{
+  position: absolute;
+  display: block;
+  content: "";
+  background: #fff;
+  height: 100%;
+}
+.player .progress .progress-bar .progress-bg::before{
+  width: 4.5px;
+  left: -4.5px;
+}
+
+.player .progress .progress-bar:hover .progress-bg{
+  height: 4px;
+}
+.player .progress .progress-bar .progress-active {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  top: 0;
+  left: 0;
+  background-color: #fff;
+  height: 100%;
+  width: 0px;
+}
+.player .progress .progress-active .dots {
+  position: absolute;
+  /* top: -4px; */
+  right: -5px;
+  width: 10px;
+  height: 10px;
+  background: #5775f8;
+  border-radius: 50%;
+  cursor: pointer;
+}
+.player .progress .end-time {
+  float: left;
+  color: #fff;
+  height: 30px;
+  line-height: 30px;
+  font-size: 16px;
+  margin-left: 10px;
+  width: 64px;
+  text-align: left;
+}
+.player .control .volume {
+  position: relative;
+  display: inline-block;
+  width: 30px;
+  height: 30px;
+  margin-left: 10px;
+  vertical-align: middle;
+}
+.player .control .volume .volume-btn {
+  width: 30px;
+  height: 30px;
+  line-height: 30px;
+  text-align: center;
+  color: #fff;
+  font-size: 30px;
+  cursor: pointer;
+}
+.player .control .volume .volume-btn:hover {
+  color: #ccc;
+}
+.player .control .volume-con {
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  visibility: hidden;
+  left: 0px;
+  top: -120px;
+  width: 30px;
+  height: 120px;
+  background: rgba(255, 255, 255, 0.5);
+  border-radius: 5px;
+}
+.player .control .volume:hover .volume-con{
+  visibility: visible;
+}
+.player .control .volume-bar{
+  width: 10px;
+  height: 100px;
+  cursor: pointer;
+}
+.player .control .volume-bg {
+  position: relative;
+  width: 2px;
+  margin: 0 auto;
+  height: 100%;
+  background: rgb(124, 122, 122);
+}
+.player .control .volume-bg::before{
+  position: absolute;
+  display: block;
+  content: "";
+  background: rgb(245, 48, 48);
+  width: 4px;
+  height: 3px;
+  bottom: -3px;
+  left: -1px;
+}
+
+.player .control .volume-bg .volume-active {
+  position: absolute;
+  bottom: 0;
+  left: -1px;
+  width: 4px;
+  height: 50px;
+  background: rgb(245, 48, 48);
+}
+
+.player .control .volume-bg .volume-active .dots {
+  position: absolute;
+  top: -3px;
+  margin-left: -6px;
+  width: 16px;
+  height: 6px;
+  border-radius: 2.5px;
+  background: #5775f8;
+  cursor: pointer;
+}
+
