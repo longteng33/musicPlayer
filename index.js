@@ -4,7 +4,7 @@ $(function () {
     var $volumeBtn = $(".player .control .volume-btn");//音量键
     var $currentTime = $(".player .progress .current-time");
     var $endTime = $(".player .progress .end-time");
-    var timer;//计时器
+    var timer=null;//计时器
     var endTime = oAudio.duration;
     var currentVolume = oAudio.volume;
     var $prevBtn = $(".player .control .prev-btn");//上一首
@@ -62,7 +62,9 @@ $(function () {
     function musicPlay() {
         oAudio.play()
         $playBtn.switchClass("icon-play_icon", "icon-zanting");
-        timer = setInterval(progressMove, 200);
+        if(timer==null){
+            timer = setInterval(progressMove, 200);
+        }
         $imgCon[0].style.animationPlayState = "running";
         $musicTitle[0].style.animationPlayState = "running";
     }
@@ -100,7 +102,7 @@ $(function () {
         return index;
     }
 
-    // 点击下一首
+    // 点击前一个、后一个
     function changeMusic(dir) {
         if (dir == "next") {
             index++;
@@ -163,6 +165,7 @@ $(function () {
 
     // 进度函数
     function progressMove() {
+        console.log("progressMove")
         var currentTime = oAudio.currentTime;
         $currentTime.text(dealTime(currentTime));
         var w = currentTime / endTime * newProgressBar;
@@ -199,7 +202,10 @@ $(function () {
             //不取消document的mouseup事件就会导致每次抬起鼠标都会触发这个事件
             oAudio.currentTime = showTime;
             if (!oAudio.paused) {
-                timer = setInterval(progressMove, 200);
+                if(timer==null){
+                    timer = setInterval(progressMove, 200);
+                }
+                
             }
             if (oAudio.ended) {
                 setTimeout(oAudio.onended, 400)
